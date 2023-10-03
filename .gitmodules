@@ -1,0 +1,3 @@
+[submodule "book_ros2"]
+	path = book_ros2
+	url = https://github.com/mathiasmantelli/book_ros2
