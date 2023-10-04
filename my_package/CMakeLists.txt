@@ -2,18 +2,18 @@ cmake_minimum_required(VERSION 3.8)
 project(my_package)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-  add_compile_options(-Wall -Wextra -Wpedantic)
+add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
-
-set(dependencies
-  rclcpp
-  std_msgs
-)
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
+
+set(dependencies
+  rclcpp
+  std_msgs
+)
 
 add_executable(simple src/simple.cpp)
 ament_target_dependencies(simple ${dependencies})
@@ -40,6 +40,8 @@ install(TARGETS
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION lib/${PROJECT_NAME}
 )
+
+install(DIRECTORY launch DESTINATION share/${PROJECT_NAME})
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
